@@ -6,7 +6,7 @@ namespace Smrvfx {
 [ExecuteInEditMode]
 public sealed partial class SkinnedMeshBaker : MonoBehaviour
 {
-    #region Internal objects
+#region Internal objects
 
     ComputeBuffer _samplePoints;
     ComputeBuffer _positionBuffer1;
@@ -20,9 +20,9 @@ public sealed partial class SkinnedMeshBaker : MonoBehaviour
     (Matrix4x4 current, Matrix4x4 previous) _rootMatrix;
     Mesh _tempMesh;
 
-    #endregion
+#endregion
 
-    #region MonoBehaviour implementation
+#region MonoBehaviour implementation
 
     void OnDisable()
       => DisposeInternals();
@@ -32,10 +32,12 @@ public sealed partial class SkinnedMeshBaker : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!IsValid) return;
+        if (!IsValid) 
+            return;
 
         // Lazy initialization
-        if (_tempMesh == null) InitializeInternals();
+        if (_tempMesh == null) 
+            InitializeInternals();
 
         // Current transform matrix
         _rootMatrix.current = _sources[0].transform.localToWorldMatrix;
@@ -49,19 +51,26 @@ public sealed partial class SkinnedMeshBaker : MonoBehaviour
         TransferData();
 
         // Position buffer swapping
-        (_positionBuffer1, _positionBuffer2)
-          = (_positionBuffer2, _positionBuffer1);
+        (_positionBuffer1, _positionBuffer2) = (_positionBuffer2, _positionBuffer1);
 
         // Transform matrix history
         _rootMatrix.previous = _rootMatrix.current;
+
+        //Test();
     }
 
-    #endregion
+#endregion
 
-    #region Private methods
+#region Private methods
 
+
+    void Test()
+    {
+        Debug.Log($"whats going on here?");
+    }
     void InitializeInternals()
     {
+        
         using (var mesh = new CombinedMesh(_sources))
         {
             // Sample point generation
@@ -168,7 +177,7 @@ public sealed partial class SkinnedMeshBaker : MonoBehaviour
         _compute.Dispatch(0, width / 8, height / 8, 1);
     }
 
-    #endregion
+#endregion
 }
 
 } // namespace Smrvfx
