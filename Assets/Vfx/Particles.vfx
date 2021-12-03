@@ -88,9 +88,9 @@ MonoBehaviour:
   uiBounds:
     serializedVersion: 2
     x: -375
-    y: -375
-    width: 1595
-    height: 2451
+    y: -374
+    width: 1596
+    height: 2450
 --- !u!114 &114350483966674976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2467,7 +2467,7 @@ MonoBehaviour:
   useAlphaClipping: 0
   generateMotionVector: 0
   excludeFromTAA: 0
-  materialOffset: 0
+  sortingPriority: 0
   m_SubOutputs:
   - {fileID: 8926484042661614768}
   cullMode: 0
@@ -2476,7 +2476,7 @@ MonoBehaviour:
   colorMapping: 0
   uvMode: 0
   useSoftParticle: 0
-  sortPriority: 0
+  vfxSystemSortPriority: 0
   sort: 0
   indirectDraw: 0
   computeCulling: 0
